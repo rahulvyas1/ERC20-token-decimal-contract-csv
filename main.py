@@ -13,6 +13,9 @@ print(data.json())
 
 #Read from the CSV file
 with open("/Users/rahulvyas/token_contract.csv") as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter = ' ',quotechar='|')
-        for row in csv_reader:
-            print(row)
+    ...:     csv_reader = csv.reader(csv_file, delimiter = ' ',quotechar='|')
+    ...:     for row in csv_reader:
+    ...:         if len(row) <= 1:
+    ...:             continue
+    ...:         print(type(row))
+    ...:         print(row[1].replace("'", "")[:-1])
