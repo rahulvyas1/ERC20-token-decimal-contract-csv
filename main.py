@@ -28,11 +28,10 @@ with open("/Users/rahulvyas/token_contract.csv") as csv_file:
 #####WARNING#####
 ##ETHPLORER API allows 1 call ever 2 seconds for testing##
 
-with open('/Users/rahulvyas/coins_data.txt', 'w') as csvfile:
-    csvwriter = csv.writer(csvfile, delimiter=' ',quotechar='|', quoting=csv.QUOTE_MINIMAL)
+with open('/Users/rahulvyas/coins_data.txt', 'w') as txtFile:
     for address in addresses:
         data = requests.get(URL+REQUEST_URL+address+API_URL)
-        csvwriter.writerow(data.json()['symbol'] + ": " + address + " ," + data.json()['decimals'])
         #wait 2 seconds after 1 request
-        print(data.json()['symbol'] + ": " + address + " ," + data.json()['decimals'] )
+        txtFile.write(data.json()['symbol'] + ": " + address + " ," + str(data.json()['decimals']) + "\n" )
+        print(data.json()['symbol'] + ": " + address + " ," + str(data.json()['decimals']))
         time.sleep(1)
